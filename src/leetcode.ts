@@ -529,7 +529,9 @@ export class LeetCode extends EventEmitter {
             await this.limiter.lock();
 
             const BASE = BASE_URL;
-            const res = await fetch(`${BASE}/graphql`, {
+            const res = await /* TODO: JSFIX could not patch the breaking change:
+            req.body can no longer be a string*/
+            fetch(`${BASE}/graphql`, {
                 method: "POST",
                 headers: {
                     "content-type": "application/json",
